@@ -3,19 +3,6 @@ import { Link } from 'react-router-dom';
 import { productsAPI, categoriesAPI } from '../utils/api';
 import ProductCard from '../components/ProductCard';
 
-const TrustBadge = ({ icon, title, desc }) => (
-
-  <div className="col-6 col-md-3">
-    <div className="trust-badge">
-      <div className="trust-badge-icon"><i className={`bi ${icon}`}></i></div>
-      <div className="trust-badge-text">
-        <h6>{title}</h6>
-        <p>{desc}</p>
-      </div>
-    </div>
-  </div>
-);
-
 export default function Home() {
 const [featuredProducts, setFeaturedProducts] = useState([]);
 const [newArrivals, setNewArrivals] = useState([]);
@@ -24,28 +11,31 @@ const [loading, setLoading] = useState(true);
 const [activeTab, setActiveTab] = useState('featured');
 
 useEffect(() => {
-  const fetchAll = async () => {
-    try {
-      const [featured, newArr, cats] = await Promise.all([
-        productsAPI.getFeatured(),
-        productsAPI.getNewArrivals(),
-        categoriesAPI.getAll()
-      ]);
-      // ✅ SAFE DATA HANDLING
-      setFeaturedProducts(featured?.data?.products || []);
-      setNewArrivals(newArr?.data?.products || []);
-      setCategories(cats?.data?.categories || []);
-    } catch (err) {
-      console.error("API ERROR:", err);
-      // fallback safety
-      setFeaturedProducts([]);
-      setNewArrivals([]);
-      setCategories([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-  fetchAll();
+const fetchAll = async () => {
+try {
+const [featured, newArr, cats] = await Promise.all([
+productsAPI.getFeatured(),
+productsAPI.getNewArrivals(),
+categoriesAPI.getAll()
+]);
+
+
+    setFeaturedProducts(featured?.data?.products || []);
+    setNewArrivals(newArr?.data?.products || []);
+    setCategories(cats?.data?.categories || []);
+  } catch (err) {
+    console.error("API ERROR:", err);
+    setFeaturedProducts([]);
+    setNewArrivals([]);
+    setCategories([]);
+  } finally {
+    setLoading(false);
+  }
+};
+
+fetchAll();
+
+
 }, []);
 
 const displayProducts =
@@ -54,7 +44,7 @@ activeTab === 'featured' ? featuredProducts : newArrivals;
 return ( <div className="page-enter">
 
 ```
-  {/* ===== HERO ===== */}
+  {/* HERO */}
   <section className="hero-section">
     <div className="container">
       <h1>ElectroHub</h1>
@@ -62,7 +52,7 @@ return ( <div className="page-enter">
     </div>
   </section>
 
-  {/* ===== CATEGORIES ===== */}
+  {/* CATEGORIES */}
   <section className="section-padding">
     <div className="container">
       <h2>Categories</h2>
@@ -83,7 +73,7 @@ return ( <div className="page-enter">
     </div>
   </section>
 
-  {/* ===== PRODUCTS ===== */}
+  {/* PRODUCTS */}
   <section className="section-padding">
     <div className="container">
 
@@ -91,13 +81,15 @@ return ( <div className="page-enter">
         <button onClick={() => setActiveTab('featured')}>
           Featured
         </button>
-        <button onClick={() => setActiveTab('new')}>
+        <button onClick={() => setActiveTab('newArrivals')}>
           New Arrivals
         </button>
       </div>
 
       {loading ? (
         <p>Loading products...</p>
+      ) : displayProducts.length === 0 ? (
+        <p>No products found</p>
       ) : (
         <div className="row g-3">
           {(displayProducts || []).slice(0, 8).map(product => (
