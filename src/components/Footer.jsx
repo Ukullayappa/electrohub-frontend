@@ -13,11 +13,11 @@ export default function Footer() {
             </p>
             <div className="social-links mb-3">
               {[
-                { icon: 'bi-facebook', href: '#' },
-                { icon: 'bi-twitter-x', href: '#' },
-                { icon: 'bi-instagram', href: '#' },
-                { icon: 'bi-youtube', href: '#' },
-                { icon: 'bi-linkedin', href: '#' },
+                { icon: 'bi-facebook', href: '#https://www.facebook.com/share/1BGQr28RH5/' },
+                { icon: 'bi-twitter-x', href: '#https://x.com/kullayappa_u' },
+                { icon: 'bi-instagram', href: '#https://www.instagram.com/kullayappau?igsh=M2Zia3pqa3NpNnNh' },
+                { icon: 'bi-youtube', href: '#https://youtube.com/@kullayappa-n5y?si=hhUytJiWgrpJI8ks' },
+                { icon: 'bi-linkedin', href: '#linkedin.com/in/u-kullayappa-57a326368' },
               ].map(s => (
                 <a key={s.icon} href={s.href} className="social-link">
                   <i className={`bi ${s.icon}`}></i>
@@ -112,7 +112,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container">
           <div className="d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-            <span>© 2024 ElectroHub. All rights reserved.</span>
+            <span>© 2026 ElectroHub. All rights reserved.</span>
             <div className="d-flex gap-3">
               <Link to="/privacy" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none', fontSize: '0.8rem' }}>Privacy Policy</Link>
               <Link to="/terms" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none', fontSize: '0.8rem' }}>Terms of Service</Link>

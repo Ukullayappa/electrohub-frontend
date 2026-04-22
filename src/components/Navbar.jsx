@@ -56,7 +56,7 @@ searchTimeout.current = setTimeout(async () => {
   try {
     const res = await productsAPI.search(val);
 
-    //  SAFE FIX
+    
     setSearchResults(res.data?.products || []);
     setShowSearch(true);
 
@@ -102,7 +102,6 @@ return (
 🚀 Free shipping on orders over ₹5,000  | 
 Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </div>
 
-```
   <nav className={`main-navbar ${scrolled ? 'scrolled' : ''}`}>
     <div className="container">
       <div className="d-flex align-items-center gap-3 gap-lg-4">

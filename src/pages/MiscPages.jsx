@@ -153,10 +153,10 @@ export function About() {
   ];
 
   const team = [
-    { name: 'Rajesh Kumar', role: 'CEO & Founder', color: '#0066FF' },
-    { name: 'Priya Sharma', role: 'CTO', color: '#7C3AED' },
-    { name: 'Arjun Patel', role: 'Head of Operations', color: '#059669' },
-    { name: 'Meena Reddy', role: 'Customer Success', color: '#DC2626' },
+    { name: 'kullayappa', role: 'CEO & Founder', color: '#0066FF' },
+    { name: 'ismail', role: 'CTO', color: '#7C3AED' },
+    { name: 'sadha', role: 'Head of Operations', color: '#059669' },
+    { name: 'jay', role: 'Customer Success', color: '#DC2626' },
   ];
 
   return (
