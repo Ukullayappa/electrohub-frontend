@@ -10,14 +10,14 @@ timeout: 15000,
 headers: { 'Content-Type': 'application/json' },
 });
 
-// Attach token
+// ─── REQUEST ─────────────────────────
 API.interceptors.request.use((config) => {
 const token = localStorage.getItem('token');
 if (token) config.headers.Authorization = `Bearer ${token}`;
 return config;
 });
 
-// Handle 401
+// ─── RESPONSE ────────────────────────
 API.interceptors.response.use(
 (res) => res,
 (err) => {
@@ -29,12 +29,20 @@ return Promise.reject(err);
 }
 );
 
-// 🔥 HELPER: safe data extractor
-const safe = (res, key, fallback = []) => {
-return res?.data?.[key] ?? fallback;
+// ─── HELPER ─────────────────────────
+const safe = (res, key, fallback = []) =>
+res?.data?.[key] ?? fallback;
+
+// ─── AUTH ───────────────────────────
+export const authAPI = {
+register: (data) => API.post('/auth/register', data),
+login: (data) => API.post('/auth/login', data),
+getMe: () => API.get('/auth/me'),
+updateProfile: (data) => API.put('/auth/profile', data),
+updatePassword: (data) => API.put('/auth/password', data),
 };
 
-// ── PRODUCTS ─────────────────────────────────────
+// ─── PRODUCTS ───────────────────────
 export const productsAPI = {
 getAll: async (params) => {
 const res = await API.get('/products', { params });
@@ -45,29 +53,25 @@ pagination: safe(res, 'pagination', {})
 }
 };
 },
-
 getFeatured: async () => {
 const res = await API.get('/products/featured');
 return { data: { products: safe(res, 'products') } };
 },
-
 getNewArrivals: async () => {
 const res = await API.get('/products/new-arrivals');
 return { data: { products: safe(res, 'products') } };
 },
-
 search: async (q) => {
 const res = await API.get('/products/search', { params: { q } });
 return { data: { products: safe(res, 'products') } };
 },
-
 getBrands: async () => {
 const res = await API.get('/products/brands');
 return { data: { brands: safe(res, 'brands') } };
 },
 };
 
-// ── CATEGORIES ───────────────────────────────────
+// ─── CATEGORIES ─────────────────────
 export const categoriesAPI = {
 getAll: async () => {
 const res = await API.get('/categories');
@@ -75,22 +79,39 @@ return { data: { categories: safe(res, 'categories') } };
 }
 };
 
-// ── CART ─────────────────────────────────────────
+// ─── CART ───────────────────────────
 export const cartAPI = {
 getCart: async () => {
 const res = await API.get('/cart');
 return { data: { items: safe(res, 'items') } };
-}
+},
+addItem: (productId, quantity) =>
+API.post('/cart', { productId, quantity }),
+updateItem: (id, quantity) =>
+API.put(`/cart/${id}`, { quantity }),
+removeItem: (id) =>
+API.delete(`/cart/${id}`),
+clearCart: () =>
+API.delete('/cart'),
 };
 
-// ── WISHLIST ─────────────────────────────────────
+// ─── ORDERS (FIXED) ─────────────────
+export const ordersAPI = {
+getAll: () => API.get('/orders'),
+getById: (id) => API.get(`/orders/${id}`),
+create: (data) => API.post('/orders', data),
+updateStatus: (id, data) => API.put(`/orders/${id}/status`, data),
+getStats: () => API.get('/orders/admin/stats'),
+};
+
+// ─── WISHLIST ───────────────────────
 export const wishlistAPI = {
 getAll: async () => {
 const res = await API.get('/wishlist');
 return { data: { items: safe(res, 'items') } };
 },
-
 toggle: (pid) => API.post('/wishlist', { productId: pid }),
+remove: (pid) => API.delete(`/wishlist/${pid}`),
 };
 
 export default API;
