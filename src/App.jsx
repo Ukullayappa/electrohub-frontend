@@ -18,7 +18,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import { Login, Register } from './pages/Auth';
 import { Orders, OrderDetail, Wishlist, Profile } from './pages/UserPages';
-import { Categories, Deals, About } from './pages/MiscPages';
+import { Categories, Deals, About, Contact, FAQ, Shipping, Returns, Privacy, Terms } from './pages/MiscPages';
 import AdminDashboard from './pages/AdminDashboard';
 
 function Layout({ children, hideFooter = false }) {
@@ -70,6 +70,12 @@ export default function App() {
               <Route path="/categories" element={<Layout><Categories /></Layout>} />
               <Route path="/deals" element={<Layout><Deals /></Layout>} />
               <Route path="/about" element={<Layout><About /></Layout>} />
+              <Route path="/contact" element={<Layout><Contact /></Layout>} />
+              <Route path="/faq" element={<Layout><FAQ /></Layout>} />
+              <Route path="/shipping" element={<Layout><Shipping /></Layout>} />
+              <Route path="/returns" element={<Layout><Returns /></Layout>} />
+              <Route path="/privacy" element={<Layout><Privacy /></Layout>} />
+              <Route path="/terms" element={<Layout><Terms /></Layout>} />
               <Route path="/cart" element={<Layout><Cart /></Layout>} />
 
               {/* Auth Routes */}

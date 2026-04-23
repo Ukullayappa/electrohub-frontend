@@ -269,3 +269,244 @@ export function About() {
     </div>
   );
 }
+// ===== CONTACT PAGE =====
+export function Contact() {
+  return (
+    <div className="page-enter">
+      <div className="breadcrumb-section">
+        <div className="container">
+          <nav><ol className="breadcrumb mb-0">
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+            <li className="breadcrumb-item active">Contact Us</li>
+          </ol></nav>
+        </div>
+      </div>
+
+      <div className="container section-padding">
+        <div className="row g-5">
+          <div className="col-lg-5">
+            <div className="section-tag">Get in Touch</div>
+            <h1 className="section-title">We're Here to Help</h1>
+            <p style={{ color: 'var(--gray-2)', marginBottom: '2rem' }}>
+              Have questions about a product, order, or shipping? Our team is ready to assist you.
+            </p>
+
+            <div className="d-flex flex-column gap-4">
+              <div className="d-flex gap-3">
+                <div style={{ width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                  <i className="bi bi-geo-alt"></i>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '1rem' }}>Our Office</div>
+                  <div style={{ color: 'var(--gray-3)', fontSize: '0.875rem' }}>123 Tech Park, Electronics City<br />Bangalore, KA 560100, India</div>
+                </div>
+              </div>
+
+              <div className="d-flex gap-3">
+                <div style={{ width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                  <i className="bi bi-envelope"></i>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '1rem' }}>Email Support</div>
+                  <div style={{ color: 'var(--gray-3)', fontSize: '0.875rem' }}>support@electrohub.com<br />sales@electrohub.com</div>
+                </div>
+              </div>
+
+              <div className="d-flex gap-3">
+                <div style={{ width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                  <i className="bi bi-telephone"></i>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '1rem' }}>Call Us</div>
+                  <div style={{ color: 'var(--gray-3)', fontSize: '0.875rem' }}>+91 800 123 4567<br />Mon-Sat, 9am - 6pm</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-7">
+            <div style={{ background: 'white', border: '1px solid var(--gray-4)', borderRadius: 'var(--radius-lg)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '1.5rem' }}>Send us a Message</h4>
+              <form>
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Your Name</label>
+                    <input type="text" className="form-control" placeholder="John Doe" />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label">Email Address</label>
+                    <input type="email" className="form-control" placeholder="john@example.com" />
+                  </div>
+                  <div className="col-12">
+                    <label className="form-label">Subject</label>
+                    <input type="text" className="form-control" placeholder="How can we help?" />
+                  </div>
+                  <div className="col-12">
+                    <label className="form-label">Message</label>
+                    <textarea className="form-control" rows="5" placeholder="Tell us more about your inquiry..."></textarea>
+                  </div>
+                  <div className="col-12">
+                    <button type="submit" className="btn btn-primary px-5 py-2 mt-2">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== FAQ PAGE =====
+export function FAQ() {
+  const faqs = [
+    { q: 'Are your products authentic?', a: 'Yes, all products sold on ElectroHub are 100% authentic and come directly from authorized distributors or the brands themselves.' },
+    { q: 'How long does shipping take?', a: 'Standard shipping usually takes 3-5 business days across India. Express shipping is available for select pin codes with 1-2 day delivery.' },
+    { q: 'What is your return policy?', a: 'We offer a 30-day easy return policy for most items. The product must be in its original packaging and unused condition.' },
+    { q: 'Do you provide warranty?', a: 'All our electronics come with the standard manufacturer warranty. You can claim it at any authorized service center of the brand.' },
+    { q: 'How can I track my order?', a: 'Once your order is shipped, you will receive a tracking ID via email and SMS. You can also track it in the "My Orders" section of your account.' }
+  ];
+
+  return (
+    <div className="page-enter">
+      <div className="breadcrumb-section">
+        <div className="container">
+          <nav><ol className="breadcrumb mb-0">
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+            <li className="breadcrumb-item active">FAQ</li>
+          </ol></nav>
+        </div>
+      </div>
+      <div className="container section-padding">
+        <div className="section-header text-center">
+          <div className="section-tag">Questions</div>
+          <h1 className="section-title">Frequently Asked Questions</h1>
+          <p className="section-subtitle mx-auto">Find quick answers to common queries about shopping with us.</p>
+        </div>
+
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="d-flex flex-column gap-3">
+              {faqs.map((f, i) => (
+                <div key={i} style={{ background: 'white', border: '1px solid var(--gray-4)', borderRadius: 'var(--radius-md)', padding: '1.5rem' }}>
+                  <h5 style={{ fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.75rem', color: 'var(--dark)' }}>{f.q}</h5>
+                  <p style={{ color: 'var(--gray-2)', fontSize: '0.95rem', margin: 0, lineHeight: '1.6' }}>{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== SHIPPING PAGE =====
+export function Shipping() {
+  return (
+    <div className="page-enter">
+      <div className="breadcrumb-section">
+        <div className="container">
+          <nav><ol className="breadcrumb mb-0">
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+            <li className="breadcrumb-item active">Shipping Info</li>
+          </ol></nav>
+        </div>
+      </div>
+      <div className="container section-padding">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <h1 className="section-title">Shipping Policy</h1>
+            <div style={{ color: 'var(--gray-1)', lineHeight: '1.8' }}>
+              <p>We strive to deliver your products as quickly and safely as possible. We partner with the most reliable courier services in India to ensure your tech reaches you in perfect condition.</p>
+              
+              <h5 className="mt-4 fw-bold">1. Delivery Timeline</h5>
+              <ul>
+                <li><strong>Metro Cities:</strong> 2-3 business days</li>
+                <li><strong>Other Cities:</strong> 3-5 business days</li>
+                <li><strong>Remote Areas:</strong> 5-7 business days</li>
+              </ul>
+
+              <h5 className="mt-4 fw-bold">2. Shipping Charges</h5>
+              <p>We offer <strong>FREE SHIPPING</strong> on all orders above ₹999. For orders below this amount, a flat shipping fee of ₹49 will be charged.</p>
+
+              <h5 className="mt-4 fw-bold">3. Order Tracking</h5>
+              <p>Every order is assigned a unique tracking number which is sent to your registered email and mobile number as soon as the package leaves our warehouse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== RETURNS PAGE =====
+export function Returns() {
+  return (
+    <div className="page-enter">
+      <div className="breadcrumb-section">
+        <div className="container">
+          <nav><ol className="breadcrumb mb-0">
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+            <li className="breadcrumb-item active">Returns Policy</li>
+          </ol></nav>
+        </div>
+      </div>
+      <div className="container section-padding">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <h1 className="section-title">Returns & Refunds</h1>
+            <div style={{ color: 'var(--gray-1)', lineHeight: '1.8' }}>
+              <p>Customer satisfaction is our priority. If you're not completely satisfied with your purchase, we're here to help.</p>
+
+              <h5 className="mt-4 fw-bold">1. 30-Day Return Policy</h5>
+              <p>You can return most items within 30 days of delivery. The item must be unused, in the same condition that you received it, and in the original packaging with all accessories and manuals.</p>
+
+              <h5 className="mt-4 fw-bold">2. Refund Process</h5>
+              <p>Once we receive and inspect the returned item, we will notify you of the approval or rejection of your refund. If approved, the refund will be processed to your original payment method within 5-7 business days.</p>
+
+              <h5 className="mt-4 fw-bold">3. Non-Returnable Items</h5>
+              <p>Certain items like hygiene-sensitive products (earphones), software, and gift cards are non-returnable once the seal is broken.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== PRIVACY PAGE =====
+export function Privacy() {
+  return (
+    <div className="page-enter">
+      <div className="container section-padding">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <h1 className="section-title">Privacy Policy</h1>
+            <p>Your privacy is important to us. It is ElectroHub's policy to respect your privacy regarding any information we may collect from you across our website.</p>
+            <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent.</p>
+            <p>We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== TERMS PAGE =====
+export function Terms() {
+  return (
+    <div className="page-enter">
+      <div className="container section-padding">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <h1 className="section-title">Terms of Service</h1>
+            <p>By accessing the website at ElectroHub, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
+            <p>The materials on ElectroHub's website are provided on an 'as is' basis. ElectroHub makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
