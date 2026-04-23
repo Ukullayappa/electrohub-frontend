@@ -248,8 +248,5 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
       </div>
     </div>
   </nav>
-</>
-
-
-);
+</>);
 }
