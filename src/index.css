@@ -1,4 +1,5 @@
-/* ===== ELECTROHUB PRO THEME (INTER) ===== */
+/* ===== ELECTROHUB PRO THEME (PLUS JAKARTA SANS) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -23,7 +24,7 @@
 
   --white: #FFFFFF;
 
-  --font-main: 'Inter', sans-serif;
+  --font-main: 'Plus Jakarta Sans', sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -43,21 +44,23 @@
 
 body {
   font-family: var(--font-main);
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--dark);
   background: var(--white);
-  line-height: 1.65;
-  letter-spacing: -0.01em;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
 }
 
 /* HEADINGS */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-main);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--dark);
 }
+
 
 /* ===== NAVBAR ===== */
 .main-navbar {
