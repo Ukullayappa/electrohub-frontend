@@ -95,6 +95,7 @@ const navLinks = [
 { to: '/categories', label: 'Categories' },
 { to: '/deals', label: 'Deals' },
 { to: '/about', label: 'About' },
+{ to: '/contact', label: 'Contact' },
 ];
 
 return (
@@ -189,7 +190,10 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
                 </ul>
               </div>
             ) : (
-              <Link to="/login" className="btn btn-outline-primary btn-sm px-3 ms-2">Login</Link>
+              <div className="d-flex gap-2 ms-2">
+                <Link to="/login" className="btn btn-outline-primary btn-sm px-3">Login</Link>
+                <Link to="/register" className="btn btn-primary btn-sm px-3">Sign Up</Link>
+              </div>
             )}
           </div>
 

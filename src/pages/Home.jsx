@@ -158,8 +158,6 @@ return ( <div className="page-enter">
 
     </div>
   </section>
-
-
-
+</div>
 );
 }
