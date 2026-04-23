@@ -1,7 +1,8 @@
-/* ===== ELECTROHUB PRO THEME (PLUS JAKARTA SANS) ===== */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* ===== ELECTROHUB PRO THEME (PLUS JAKARTA SANS) ===== */
 
 /* ===== VARIABLES ===== */
 :root {
@@ -65,9 +66,11 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== NAVBAR ===== */
 .main-navbar {
   background: rgba(255,255,255,0.9);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gray-4);
 }
+
 
 .navbar-brand {
   font-weight: 800;
