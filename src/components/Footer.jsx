@@ -13,13 +13,13 @@ export default function Footer() {
             </p>
             <div className="social-links mb-3">
               {[
-                { icon: 'bi-facebook', href: '#https://www.facebook.com/share/1BGQr28RH5/' },
-                { icon: 'bi-twitter-x', href: '#https://x.com/kullayappa_u' },
-                { icon: 'bi-instagram', href: '#https://www.instagram.com/kullayappau?igsh=M2Zia3pqa3NpNnNh' },
-                { icon: 'bi-youtube', href: '#https://youtube.com/@kullayappa-n5y?si=hhUytJiWgrpJI8ks' },
+                { icon: 'bi-facebook', href: 'https://www.facebook.com/share/1BGQr28RH5/' },
+                { icon: 'bi-twitter-x', href: 'https://x.com/kullayappa_u' },
+                { icon: 'bi-instagram', href: 'https://www.instagram.com/kullayappau?igsh=M2Zia3pqa3NpNnNh' },
+                { icon: 'bi-youtube', href: 'https://youtube.com/@kullayappa-n5y?si=hhUytJiWgrpJI8ks' },
                 { icon: 'bi-linkedin', href: '#linkedin.com/in/u-kullayappa-57a326368' },
               ].map(s => (
-                <a key={s.icon} href={s.href} className="social-link">
+                <a key={s.icon} href={s.href} target="_blank" rel="noopener noreferrer" className="social-link">
                   <i className={`bi ${s.icon}`}></i>
                 </a>
               ))}
