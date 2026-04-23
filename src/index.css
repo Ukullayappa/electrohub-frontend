@@ -85,9 +85,21 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 575.98px) {
   .navbar-brand {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
+
+@media (max-width: 375px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+    max-width: 120px;
+  }
+}
+
 
 
 .nav-link {
@@ -599,12 +611,22 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 575.98px) {
   .icon-btn {
-    padding: 6px;
+    padding: 5px;
   }
   .icon-btn i {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
   }
 }
+
+@media (max-width: 375px) {
+  .icon-btn {
+    padding: 4px;
+  }
+  .icon-btn i {
+    font-size: 1.1rem !important;
+  }
+}
+
 
 
 /* ===== SEARCH DROPDOWN ===== */
