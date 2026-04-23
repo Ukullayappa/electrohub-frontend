@@ -153,11 +153,12 @@ export function About() {
   ];
 
   const team = [
-    { name: 'kullayappa', role: 'CEO & Founder', color: '#0066FF' },
-    { name: 'ismail', role: 'CTO', color: '#7C3AED' },
-    { name: 'sadha', role: 'Head of Operations', color: '#059669' },
-    { name: 'jay', role: 'Customer Success', color: '#DC2626' },
+    { name: 'U. Kullayappa', role: 'CEO & Founder', color: '#0066FF' },
+    { name: 'Ismail', role: 'CTO', color: '#7C3AED' },
+    { name: 'Sadha', role: 'Head of Operations', color: '#059669' },
+    { name: 'Jay', role: 'Customer Success', color: '#DC2626' },
   ];
+
 
   return (
     <div className="page-enter">
