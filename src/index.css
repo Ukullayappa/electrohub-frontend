@@ -268,10 +268,12 @@ h1, h2, h3, h4, h5, h6 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
-  /* autoprefixer: ignore next */
+  /*! autoprefixer: off */
   -webkit-box-orient: vertical;
+  /*! autoprefixer: on */
   overflow: hidden;
-  height: 2.8em;
+  max-height: 2.8em;
+
   margin-bottom: 8px;
   transition: var(--transition);
 }
