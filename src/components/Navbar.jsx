@@ -161,20 +161,20 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
         </div>
 
         {/* Right side Actions */}
-        <div className="d-flex align-items-center gap-1 gap-md-2">
+        <div className="d-flex align-items-center gap-1 gap-md-2 ms-auto">
           
           {/* Mobile Search Toggle */}
           <button className="icon-btn d-md-none" onClick={() => setShowSearch(!showSearch)}>
-            <i className="bi bi-search"></i>
+            <i className="bi bi-search fs-5"></i>
           </button>
 
           {/* Cart */}
-          <button className="icon-btn" onClick={() => navigate('/cart')}>
-            <i className="bi bi-cart3 fs-5"></i>
+          <button className="icon-btn position-relative" onClick={() => navigate('/cart')}>
+            <i className="bi bi-bag fs-5"></i>
             {cartCount > 0 && <span className="badge">{cartCount}</span>}
           </button>
 
-          {/* User Desktop */}
+          {/* User Desktop Only */}
           <div className="d-none d-md-block">
             {user ? (
               <div className="dropdown">
@@ -194,11 +194,12 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
             )}
           </div>
 
-          {/* Mobile toggle */}
-          <button className="icon-btn d-lg-none ms-1" onClick={() => setMobileMenuOpen(true)}>
+          {/* Mobile Menu toggle */}
+          <button className="icon-btn d-lg-none" onClick={() => setMobileMenuOpen(true)}>
             <i className="bi bi-list fs-4"></i>
           </button>
         </div>
+
       </div>
 
       {/* Mobile Search Bar (Expandable) */}

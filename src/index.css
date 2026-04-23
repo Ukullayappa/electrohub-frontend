@@ -67,13 +67,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-brand {
-  font-weight: 700;
-  font-size: 1.4rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
 }
 
 .navbar-brand span {
   color: var(--primary);
 }
+
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+
 
 .nav-link {
   font-size: 0.9rem;
@@ -580,6 +589,16 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--gray-5);
   color: var(--primary);
 }
+
+@media (max-width: 575.98px) {
+  .icon-btn {
+    padding: 6px;
+  }
+  .icon-btn i {
+    font-size: 1.2rem !important;
+  }
+}
+
 
 .icon-btn .badge {
   position: absolute;
