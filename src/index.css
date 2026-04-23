@@ -309,16 +309,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .price-current {
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.2rem;
   color: var(--primary);
+  letter-spacing: -0.02em;
 }
 
 .price-original {
-  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
   color: var(--gray-3);
   text-decoration: line-through;
+  opacity: 0.8;
 }
+
 
 .product-card-footer {
   padding: 0 15px 15px;
