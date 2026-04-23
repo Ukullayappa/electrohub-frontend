@@ -136,29 +136,28 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
           </form>
 
           {showSearch && searchResults.length > 0 && (
-            <div className="search-dropdown position-absolute bg-white shadow-lg border rounded-3 mt-2 w-100 overflow-hidden" style={{ z-index: 1000 }}>
+            <div className="search-dropdown shadow-lg">
               {(searchResults || []).map(p => (
                 <div
                   key={p.id}
-                  className="d-flex align-items-center gap-3 p-2 hover-bg-light"
-                  style={{ cursor: 'pointer' }}
+                  className="search-item"
                   onClick={() => handleSearchSelect(p.slug)}
                 >
                   <img
                     src={p.images?.[0] || 'https://via.placeholder.com/48'}
                     alt={p.name}
-                    style={{ width: 40, height: 40, objectFit: 'contain' }}
                   />
-                  <div style={{ flex: 1 }}>
-                    <div className="fw-medium small text-truncate" style={{ maxWidth: '180px' }}>{p.name}</div>
-                    <div className="text-muted extra-small">{p.brand}</div>
+                  <div className="search-item-info">
+                    <div className="name">{p.name}</div>
+                    <div className="brand">{p.brand}</div>
                   </div>
-                  <div className="fw-bold small">{formatPrice(p.price)}</div>
+                  <div className="price">{formatPrice(p.price)}</div>
                 </div>
               ))}
             </div>
           )}
         </div>
+
 
         {/* Right side Actions */}
         <div className="d-flex align-items-center gap-1 gap-md-2 ms-auto">

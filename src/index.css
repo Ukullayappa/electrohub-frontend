@@ -603,13 +603,85 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* ===== SEARCH DROPDOWN ===== */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid var(--gray-4);
+  border-radius: var(--radius-md);
+  margin-top: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1050;
+  box-shadow: var(--shadow-lg);
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 1px solid var(--gray-5);
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item:hover {
+  background: var(--gray-6);
+}
+
+.search-item img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: var(--white);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.search-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-item-info .name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-item-info .brand {
+  font-size: 0.75rem;
+  color: var(--gray-3);
+}
+
+.search-item .price {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+/* Icon Buttons Refined */
 .icon-btn .badge {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -2px;
+  right: -2px;
   background: var(--primary);
   color: white;
-  font-size: 0.7rem;
-  padding: 2px 5px;
+  font-size: 0.65rem;
+  padding: 1px 5px;
   border-radius: 10px;
-}
+  font-weight: 800;
+  border: 2px solid white;
+}
+
