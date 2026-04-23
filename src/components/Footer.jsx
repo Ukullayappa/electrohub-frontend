@@ -17,7 +17,7 @@ export default function Footer() {
                 { icon: 'bi-twitter-x', href: 'https://x.com/kullayappa_u' },
                 { icon: 'bi-instagram', href: 'https://www.instagram.com/kullayappau?igsh=M2Zia3pqa3NpNnNh' },
                 { icon: 'bi-youtube', href: 'https://youtube.com/@kullayappa-n5y?si=hhUytJiWgrpJI8ks' },
-                { icon: 'bi-linkedin', href: '#linkedin.com/in/u-kullayappa-57a326368' },
+                { icon: 'bi-linkedin', href: 'https://linkedin.com/in/u-kullayappa-57a326368' },
               ].map(s => (
                 <a key={s.icon} href={s.href} target="_blank" rel="noopener noreferrer" className="social-link">
                   <i className={`bi ${s.icon}`}></i>
