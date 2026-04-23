@@ -232,60 +232,64 @@ export default function ProductDetail() {
               )}
 
               {/* Quantity + Actions */}
-              <div className="d-flex align-items-center gap-3 mb-4 flex-wrap">
-                <div className="quantity-control">
+              <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3 mb-4">
+                <div className="quantity-control mx-auto mx-sm-0">
                   <button className="qty-btn" onClick={() => setQuantity(q => Math.max(1, q - 1))}>−</button>
-                  <span className="qty-value">{quantity}</span>
+                  <span className="qty-value px-3 fw-bold">{quantity}</span>
                   <button className="qty-btn" onClick={() => setQuantity(q => Math.min(product.stock, q + 1))}>+</button>
                 </div>
 
-                <button
-                  className="btn btn-dark flex-grow-1"
-                  onClick={handleAddToCart}
-                  disabled={product.stock === 0 || addingToCart}
-                  style={{ padding: '0.75rem 1.5rem' }}
-                >
-                  {addingToCart ? (
-                    <span className="spinner-border spinner-border-sm me-2"></span>
-                  ) : (
-                    <i className="bi bi-bag-plus me-2"></i>
-                  )}
-                  Add to Cart
-                </button>
+                <div className="d-flex gap-2 flex-grow-1">
+                  <button
+                    className="btn btn-dark flex-grow-1 py-3 px-4"
+                    onClick={handleAddToCart}
+                    disabled={product.stock === 0 || addingToCart}
+                  >
+                    {addingToCart ? (
+                      <span className="spinner-border spinner-border-sm me-2"></span>
+                    ) : (
+                      <i className="bi bi-bag-plus me-2"></i>
+                    )}
+                    Add to Cart
+                  </button>
 
+                  <button
+                    className={`btn ${isWishlisted(product.id) ? 'btn-danger' : 'btn-outline-secondary'} py-3 px-3`}
+                    onClick={() => toggleWishlist(product.id)}
+                  >
+                    <i className={`bi ${isWishlisted(product.id) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
+                  </button>
+                </div>
+              </div>
+
+              <div className="d-grid mb-4">
                 <button
-                  className="btn btn-primary flex-grow-1"
+                  className="btn btn-primary py-3 fw-bold"
                   onClick={handleBuyNow}
                   disabled={product.stock === 0}
-                  style={{ padding: '0.75rem 1.5rem' }}
                 >
                   <i className="bi bi-lightning-fill me-2"></i>
                   Buy Now
                 </button>
-
-                <button
-                  className={`btn ${isWishlisted(product.id) ? 'btn-danger' : 'btn-outline-secondary'}`}
-                  onClick={() => toggleWishlist(product.id)}
-                  style={{ padding: '0.75rem' }}
-                >
-                  <i className={`bi ${isWishlisted(product.id) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
-                </button>
               </div>
 
               {/* Trust Row */}
-              <div className="d-flex flex-wrap gap-3" style={{ padding: '1rem', background: 'var(--gray-6)', borderRadius: 'var(--radius-md)' }}>
+              <div className="row g-2 p-3 bg-light rounded-4">
                 {[
                   { icon: 'bi-truck', text: 'Free Delivery' },
                   { icon: 'bi-shield-check', text: '2 Year Warranty' },
                   { icon: 'bi-arrow-repeat', text: '30-Day Returns' },
                   { icon: 'bi-award', text: '100% Authentic' },
                 ].map(item => (
-                  <div key={item.text} className="d-flex align-items-center gap-1" style={{ fontSize: '0.8rem', color: 'var(--gray-1)', fontWeight: 500 }}>
-                    <i className={`bi ${item.icon}`} style={{ color: 'var(--primary)' }}></i>
-                    {item.text}
+                  <div key={item.text} className="col-6 col-md-3">
+                    <div className="d-flex align-items-center gap-2 justify-content-center justify-content-md-start" style={{ fontSize: '0.75rem', color: 'var(--gray-1)', fontWeight: 600 }}>
+                      <i className={`bi ${item.icon} text-primary`}></i>
+                      <span>{item.text}</span>
+                    </div>
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
         </div>

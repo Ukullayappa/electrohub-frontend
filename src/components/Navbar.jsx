@@ -102,17 +102,17 @@ return (
 🚀 Free shipping on orders over ₹5,000  | 
 Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </div>
 
-  <nav className={`main-navbar ${scrolled ? 'scrolled' : ''}`}>
+  <nav className={`main-navbar sticky-top ${scrolled ? 'scrolled shadow-sm' : ''}`}>
     <div className="container">
-      <div className="d-flex align-items-center gap-3 gap-lg-4">
+      <div className="d-flex align-items-center py-2">
 
         {/* Brand */}
-        <Link to="/" className="navbar-brand me-2">
+        <Link to="/" className="navbar-brand me-auto me-lg-4">
           Electro<span>Hub</span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="d-none d-lg-flex align-items-center gap-1">
+        <div className="d-none d-lg-flex align-items-center gap-1 me-auto">
           {(navLinks || []).map(l => (
             <NavLink key={l.to} to={l.to} className="nav-link" end={l.to === '/'}>
               {l.label}
@@ -120,14 +120,15 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
           ))}
         </div>
 
-        {/* Search */}
-        <div className="search-wrapper d-none d-md-block" ref={searchRef} style={{ flex: 1, maxWidth: 400 }}>
-          <form onSubmit={handleSearchSubmit}>
-            <i className="bi bi-search search-icon"></i>
+        {/* Search Desktop */}
+        <div className="search-wrapper d-none d-md-block me-3" ref={searchRef} style={{ flex: 1, maxWidth: 350 }}>
+          <form onSubmit={handleSearchSubmit} className="position-relative">
+            <i className="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
             <input
               type="text"
-              className="search-input"
+              className="form-control ps-5 rounded-pill"
               placeholder="Search products..."
+              style={{ background: 'var(--gray-6)' }}
               value={searchQuery}
               onChange={handleSearch}
               onFocus={() => searchResults.length > 0 && setShowSearch(true)}
@@ -135,62 +136,116 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
           </form>
 
           {showSearch && searchResults.length > 0 && (
-            <div className="search-dropdown">
+            <div className="search-dropdown position-absolute bg-white shadow-lg border rounded-3 mt-2 w-100 overflow-hidden" style={{ z-index: 1000 }}>
               {(searchResults || []).map(p => (
                 <div
                   key={p.id}
-                  className="d-flex align-items-center gap-3 p-3"
+                  className="d-flex align-items-center gap-3 p-2 hover-bg-light"
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleSearchSelect(p.slug)}
                 >
                   <img
                     src={p.images?.[0] || 'https://via.placeholder.com/48'}
                     alt={p.name}
-                    style={{ width: 44, height: 44 }}
+                    style={{ width: 40, height: 40, objectFit: 'contain' }}
                   />
                   <div style={{ flex: 1 }}>
-                    <div>{p.name}</div>
-                    <div>{p.brand}</div>
+                    <div className="fw-medium small text-truncate" style={{ maxWidth: '180px' }}>{p.name}</div>
+                    <div className="text-muted extra-small">{p.brand}</div>
                   </div>
-                  <div>{formatPrice(p.price)}</div>
+                  <div className="fw-bold small">{formatPrice(p.price)}</div>
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        {/* Right side */}
-        <div className="d-flex align-items-center gap-2 ms-auto">
-
-          {/* Cart */}
-          <button onClick={() => navigate('/cart')}>
-            🛒 {cartCount || 0}
+        {/* Right side Actions */}
+        <div className="d-flex align-items-center gap-1 gap-md-2">
+          
+          {/* Mobile Search Toggle */}
+          <button className="icon-btn d-md-none" onClick={() => setShowSearch(!showSearch)}>
+            <i className="bi bi-search"></i>
           </button>
 
-          {/* User */}
-          {user ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
+          {/* Cart */}
+          <button className="icon-btn" onClick={() => navigate('/cart')}>
+            <i className="bi bi-cart3 fs-5"></i>
+            {cartCount > 0 && <span className="badge">{cartCount}</span>}
+          </button>
+
+          {/* User Desktop */}
+          <div className="d-none d-md-block">
+            {user ? (
+              <div className="dropdown">
+                <button className="icon-btn dropdown-toggle no-caret" data-bs-toggle="dropdown">
+                  <i className="bi bi-person fs-5"></i>
+                </button>
+                <ul className="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                  <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
+                  <li><Link className="dropdown-item" to="/orders">Orders</Link></li>
+                  {isAdmin && <li><Link className="dropdown-item text-primary" to="/admin">Admin Panel</Link></li>}
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><button className="dropdown-item text-danger" onClick={handleLogout}>Logout</button></li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/login" className="btn btn-outline-primary btn-sm px-3 ms-2">Login</Link>
+            )}
+          </div>
 
           {/* Mobile toggle */}
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            ☰
+          <button className="icon-btn d-lg-none ms-1" onClick={() => setMobileMenuOpen(true)}>
+            <i className="bi bi-list fs-4"></i>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="d-lg-none mt-3">
-          {(navLinks || []).map(l => (
-            <NavLink key={l.to} to={l.to} onClick={() => setMobileMenuOpen(false)}>
-              {l.label}
-            </NavLink>
-          ))}
+      {/* Mobile Search Bar (Expandable) */}
+      {showSearch && (
+        <div className="d-md-none py-2 border-top">
+          <form onSubmit={handleSearchSubmit} className="position-relative">
+            <i className="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+            <input
+              type="text"
+              autoFocus
+              className="form-control ps-5 rounded-pill"
+              placeholder="Search gadgets..."
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </form>
         </div>
       )}
+    </div>
+
+    {/* Mobile Offcanvas Menu */}
+    {mobileMenuOpen && <div className="mobile-nav-overlay" onClick={() => setMobileMenuOpen(false)}></div>}
+    <div className={`mobile-nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
+      <div className="mobile-nav-header">
+        <div className="navbar-brand">Electro<span>Hub</span></div>
+        <button className="btn-close" onClick={() => setMobileMenuOpen(false)}></button>
+      </div>
+      
+      <div className="mobile-nav-links">
+        {(navLinks || []).map(l => (
+          <NavLink key={l.to} to={l.to} className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+            {l.label}
+          </NavLink>
+        ))}
+        <hr className="my-3" />
+        {user ? (
+          <>
+            <div className="px-3 mb-3 small text-muted">Signed in as <strong>{user.name || user.email}</strong></div>
+            <Link to="/profile" className="nav-link" onClick={() => setMobileMenuOpen(false)}>My Profile</Link>
+            <Link to="/orders" className="nav-link" onClick={() => setMobileMenuOpen(false)}>My Orders</Link>
+            {isAdmin && <Link to="/admin" className="nav-link text-primary" onClick={() => setMobileMenuOpen(false)}>Admin Panel</Link>}
+            <button className="nav-link text-danger border-0 bg-transparent text-start" onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <Link to="/login" className="btn btn-primary w-100 mt-3" onClick={() => setMobileMenuOpen(false)}>Login / Register</Link>
+        )}
+      </div>
     </div>
   </nav>
 </>
