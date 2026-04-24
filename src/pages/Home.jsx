@@ -99,7 +99,7 @@ return ( <motion.div className="page-enter" initial={{ opacity: 0 }} animate={{ 
         </motion.div>
         
         <motion.div 
-          className="col-lg-6 d-none d-lg-block position-relative"
+          className="col-lg-6 position-relative mt-5 mt-lg-0"
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}

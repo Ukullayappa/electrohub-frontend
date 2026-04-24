@@ -554,12 +554,12 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   right: -280px;
   width: 280px;
-  height: 100%;
-  background: white;
+  height: 100vh !important;
+  background: white !important;
   z-index: 1050;
   padding: 20px;
-  transition: right 0.3s ease;
-  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -5px 0 25px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
 }
