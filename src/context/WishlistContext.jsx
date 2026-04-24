@@ -17,7 +17,6 @@ setWishlistIds(new Set());
 return;
 }
 
-```
 try {
   const res = await wishlistAPI.getAll();
 
@@ -34,7 +33,6 @@ try {
   setWishlistItems([]);
   setWishlistIds(new Set());
 }
-```
 
 }, [user]);
 
@@ -48,7 +46,6 @@ toast.info('Please login to use wishlist');
 return;
 }
 
-```
 try {
   const res = await wishlistAPI.toggle(productId);
 
@@ -63,7 +60,6 @@ try {
 } catch (err) {
   toast.error('Failed to update wishlist');
 }
-```
 
 }, [user, fetchWishlist]);
 

@@ -18,8 +18,7 @@ setCartCount(0);
 return;
 }
 
-```
-try {
+    try {
   setCartLoading(true);
 
   const res = await cartAPI.getCart();
@@ -40,7 +39,6 @@ try {
 } finally {
   setCartLoading(false);
 }
-```
 
 }, [user]);
 
@@ -54,8 +52,7 @@ toast.info('Please login to add items to cart');
 return false;
 }
 
-```
-try {
+    try {
   await cartAPI.addItem(productId, quantity);
   await fetchCart();
   toast.success('Added to cart!');
@@ -65,7 +62,6 @@ try {
   toast.error(err.response?.data?.message || 'Failed to add to cart');
   return false;
 }
-```
 
 }, [user, fetchCart]);
 
