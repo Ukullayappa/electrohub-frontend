@@ -4,7 +4,7 @@ import { ordersAPI, productsAPI, categoriesAPI, usersAPI } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
-const formatPrice = (p) => `₹${parseFloat(p || 0).toLocaleString('en-IN')}`;
+const formatPrice = (p) => `₹${parseFloat(p || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
 const formatDate = (d) => new Date(d).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
 
 const STATUS_COLORS = {
@@ -200,7 +200,7 @@ export default function AdminDashboard() {
                               <i className={s.icon}></i>
                             </div>
                             <div style={{ color: 'var(--gray-2)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>{s.label}</div>
-                            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.02em', lineHeight: 1 }}>{s.value}</div>
+                            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.02em', lineHeight: 1.2, wordBreak: 'break-word' }}>{s.value}</div>
                           </div>
                         </div>
                       </div>
