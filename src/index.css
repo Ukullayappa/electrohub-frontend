@@ -384,6 +384,21 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+.category-card .category-icon {
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.category-card .category-name {
+  color: var(--dark);
+  transition: var(--transition);
+}
+
+.category-card:hover .category-icon,
+.category-card:hover .category-name {
+  color: white !important;
+}
+
 /* ===== FORM ===== */
 .form-control {
   border-radius: var(--radius-sm);

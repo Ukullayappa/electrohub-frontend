@@ -4,6 +4,21 @@ import { productsAPI, categoriesAPI } from '../utils/api';
 import ProductCard from '../components/ProductCard';
 import { motion } from 'framer-motion';
 
+export const getCategoryIcon = (name) => {
+  const n = (name || '').toLowerCase();
+  if (n.includes('laptop')) return 'bi-laptop';
+  if (n.includes('phone') || n.includes('mobile')) return 'bi-phone';
+  if (n.includes('watch') || n.includes('wearable')) return 'bi-smartwatch';
+  if (n.includes('audio') || n.includes('headphone') || n.includes('earbud')) return 'bi-headphones';
+  if (n.includes('camera')) return 'bi-camera';
+  if (n.includes('gaming') || n.includes('console')) return 'bi-controller';
+  if (n.includes('tv') || n.includes('television')) return 'bi-tv';
+  if (n.includes('tablet') || n.includes('pad')) return 'bi-tablet';
+  if (n.includes('accessory') || n.includes('accessories')) return 'bi-usb-c-fill';
+  if (n.includes('speaker')) return 'bi-speaker';
+  return 'bi-tag';
+};
+
 export default function Home() {
 const [featuredProducts, setFeaturedProducts] = useState([]);
 const [newArrivals, setNewArrivals] = useState([]);
@@ -150,10 +165,10 @@ return ( <motion.div className="page-enter" initial={{ opacity: 0 }} animate={{ 
             <div key={cat.id} className="col-6 col-md-3">
               <Link to={`/shop?category=${cat.slug}`} className="text-decoration-none">
                 <div className="category-card h-100">
-                  <div className="fs-3 mb-2 text-primary">
-                    <i className="bi bi-tag"></i>
+                  <div className="fs-3 mb-2 category-icon">
+                    <i className={`bi ${getCategoryIcon(cat.name)}`}></i>
                   </div>
-                  <div className="fw-bold text-dark">{cat.name}</div>
+                  <div className="fw-bold category-name">{cat.name}</div>
                 </div>
               </Link>
             </div>
