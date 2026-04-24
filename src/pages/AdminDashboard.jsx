@@ -88,9 +88,9 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div style={{ display: 'flex', minHeight: 'calc(100vh - 60px)', background: '#F8FAFC' }} className="page-enter">
+    <div className="page-enter d-flex flex-column flex-lg-row" style={{ minHeight: 'calc(100vh - 60px)', background: '#F8FAFC' }}>
       {/* Sidebar */}
-      <div style={{ width: 280, background: 'white', flexShrink: 0, display: 'flex', flexDirection: 'column', borderRight: '1px solid rgba(0,0,0,0.05)', boxShadow: '4px 0 24px rgba(0,0,0,0.02)', zIndex: 10 }}>
+      <div className="admin-sidebar" style={{ background: 'white', display: 'flex', flexDirection: 'column', boxShadow: '4px 0 24px rgba(0,0,0,0.02)', zIndex: 10 }}>
         <div style={{ padding: '2rem 1.5rem', background: 'linear-gradient(135deg, rgba(0,102,255,0.03) 0%, rgba(0,212,170,0.03) 100%)', borderBottom: '1px solid rgba(0,0,0,0.03)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: 48, height: 48, borderRadius: '14px', background: 'linear-gradient(135deg, var(--primary), #00D4AA)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', fontWeight: 800, fontFamily: 'var(--font-heading)', boxShadow: '0 8px 16px rgba(0,102,255,0.2)' }}>
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
               }}
             >
               <i className={`bi ${item.icon}`} style={{ fontSize: '1.2rem', opacity: activeSection === item.key ? 1 : 0.6 }}></i>
-              {item.label}
+              <span className="d-none d-sm-inline">{item.label}</span>
             </button>
           ))}
           <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
@@ -147,7 +147,7 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <div style={{ flex: 1, overflow: 'auto', position: 'relative' }}>
-        <div style={{ position: 'sticky', top: 0, zIndex: 5, padding: '1.5rem 2.5rem', background: 'rgba(248, 250, 252, 0.8)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="admin-header" style={{ position: 'sticky', top: 0, zIndex: 5, background: 'rgba(248, 250, 252, 0.8)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.75rem', fontWeight: 800, margin: 0, textTransform: 'capitalize', letterSpacing: '-0.02em', background: 'linear-gradient(90deg, var(--dark) 0%, var(--primary) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               {activeSection}
@@ -171,7 +171,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div style={{ padding: '2.5rem' }}>
+        <div className="admin-content">
           {loading ? (
             <div className="d-flex justify-content-center align-items-center" style={{ height: '400px' }}>
               <div className="spinner-border" style={{ color: 'var(--primary)', width: '3rem', height: '3rem' }}></div>
@@ -278,8 +278,8 @@ export default function AdminDashboard() {
 
               {/* ===== PRODUCTS ===== */}
               {activeSection === 'products' && (
-                <div style={{ background: 'white', border: '1px solid rgba(0,0,0,0.03)', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)', overflow: 'hidden' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <div className="table-responsive" style={{ background: 'white', border: '1px solid rgba(0,0,0,0.03)', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '800px' }}>
                     <thead>
                       <tr style={{ background: '#F8FAFC', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                         <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gray-2)', textAlign: 'left' }}>Product</th>
@@ -343,8 +343,8 @@ export default function AdminDashboard() {
 
               {/* ===== ORDERS ===== */}
               {activeSection === 'orders' && (
-                <div style={{ background: 'white', border: '1px solid rgba(0,0,0,0.03)', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)', overflow: 'hidden' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <div className="table-responsive" style={{ background: 'white', border: '1px solid rgba(0,0,0,0.03)', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '900px' }}>
                     <thead>
                       <tr style={{ background: '#F8FAFC', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                         <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gray-2)', textAlign: 'left' }}>Order #</th>
@@ -434,8 +434,8 @@ export default function AdminDashboard() {
 
               {/* ===== USERS ===== */}
               {activeSection === 'users' && (
-                <div style={{ background: 'white', border: '1px solid rgba(0,0,0,0.03)', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)', overflow: 'hidden' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <div className="table-responsive" style={{ background: 'white', border: '1px solid rgba(0,0,0,0.03)', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '700px' }}>
                     <thead>
                       <tr style={{ background: '#F8FAFC', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                         <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--gray-2)', textAlign: 'left' }}>User</th>

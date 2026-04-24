@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-/* ===== ELECTROHUB PRO THEME (OUTFIT & INTER) ===== */
+/* ===== ELECTROHUB PRO THEME ===== */
 
 /* ===== VARIABLES ===== */
 :root {
@@ -26,7 +26,7 @@
   --white: #FFFFFF;
 
   --font-main: 'Inter', sans-serif;
-  --font-heading: 'Outfit', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -824,5 +824,39 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== ADMIN DASHBOARD RESPONSIVE ===== */
+.admin-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,0,0,0.05);
+}
+.admin-header { padding: 1.5rem 2.5rem; }
+.admin-content { padding: 2.5rem; }
+
+@media (max-width: 991.98px) {
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .admin-sidebar nav {
+    flex-direction: row !important;
+    overflow-x: auto;
+    padding: 1rem !important;
+    gap: 0.5rem !important;
+  }
+  .admin-sidebar nav button {
+    width: auto !important;
+    padding: 0.5rem 1rem !important;
+    white-space: nowrap;
+  }
+  .admin-header {
+    padding: 1.25rem 1rem !important;
+  }
+  .admin-content {
+    padding: 1rem !important;
+  }
 }
 
