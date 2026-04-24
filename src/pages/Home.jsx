@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { productsAPI, categoriesAPI } from '../utils/api';
 import ProductCard from '../components/ProductCard';
+import { motion } from 'framer-motion';
 
 export default function Home() {
 const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -41,26 +42,85 @@ fetchAll();
 const displayProducts =
 activeTab === 'featured' ? featuredProducts : newArrivals;
 
-return ( <div className="page-enter">
+return ( <motion.div className="page-enter" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
 
   {/* HERO */}
-  <section className="hero-section">
-    <div className="container">
-      <div className="row align-items-center">
-        <div className="col-lg-6">
-          <h1 className="display-4 fw-bold mb-3">Premium Electronics <br/><span className="text-primary">Next-Gen Tech</span></h1>
-          <p className="lead mb-4 opacity-75">Discover the latest gadgets, from high-performance laptops to cutting-edge smartphones. Quality guaranteed.</p>
-          <div className="d-flex gap-3 justify-content-center justify-content-lg-start">
-            <Link to="/shop" className="btn btn-primary btn-lg px-4">Shop Now</Link>
-            <Link to="/deals" className="btn btn-outline-light btn-lg px-4">View Deals</Link>
+  <section style={{ background: '#0F172A', position: 'relative', overflow: 'hidden', padding: '6rem 0' }}>
+    {/* Decorative Elements */}
+    <div style={{ position: 'absolute', top: 0, left: '20%', width: 500, height: 500, background: 'rgba(0, 102, 255, 0.15)', filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+    <div style={{ position: 'absolute', bottom: 0, right: '10%', width: 400, height: 400, background: 'rgba(0, 212, 170, 0.1)', filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+    
+    <div className="container position-relative z-1">
+      <div className="row align-items-center g-5">
+        <motion.div 
+          className="col-lg-6"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#60A5FA', padding: '0.4rem 1rem', borderRadius: 50, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', marginBottom: '2rem' }}>
+            <i className="bi bi-lightning-charge-fill"></i> NEW SEASON, NEW TECH
           </div>
-        </div>
-        <div className="col-lg-6 d-none d-lg-block">
-          {/* Placeholder for hero image */}
-          <div className="p-5 rounded-4 shadow-lg" style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tech" className="img-fluid rounded-3 shadow" />
+          
+          <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, color: 'white', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+            The Future<br/>
+            of<br/>
+            <span style={{ color: '#0066FF' }}>Electronics</span><br/>
+            Is Here
+          </h1>
+          
+          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.7)', maxWidth: 480, marginBottom: '2.5rem', lineHeight: 1.6 }}>
+            Discover cutting-edge smartphones, laptops, audio gear and more. Premium quality, unbeatable prices, delivered to your door.
+          </p>
+          
+          <div className="d-flex flex-wrap gap-3">
+            <Link to="/shop" className="btn" style={{ background: '#0066FF', color: 'white', fontWeight: 600, padding: '0.8rem 2rem', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              Shop Now <i className="bi bi-arrow-right"></i>
+            </Link>
+            <Link to="/categories" className="btn" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', fontWeight: 600, padding: '0.8rem 2rem', borderRadius: '12px' }}>
+              Browse Categories
+            </Link>
           </div>
-        </div>
+        </motion.div>
+        
+        <motion.div 
+          className="col-lg-6 d-none d-lg-block position-relative"
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        >
+          {/* Floating Image matching screenshot style */}
+          <div style={{ position: 'relative', width: '100%', maxWidth: 500, margin: '0 auto' }}>
+            <img 
+              src="https://images.unsplash.com/photo-1592899677974-e50f5cb45b41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Premium Phone" 
+              style={{ width: '100%', height: 'auto', borderRadius: '24px', boxShadow: '0 30px 60px rgba(0,0,0,0.5)', objectFit: 'cover', display: 'block', border: '1px solid rgba(255,255,255,0.05)' }} 
+            />
+            
+            {/* Floating Price Tag */}
+            <motion.div 
+              style={{ position: 'absolute', bottom: -20, left: -40, background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.2)', padding: '1rem 1.5rem', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.3)', color: 'white' }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              whileHover={{ y: -5 }}
+            >
+              <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.25rem', color: '#60A5FA' }}>₹1,34,999</div>
+              <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>iPhone 15 Pro Max</div>
+            </motion.div>
+
+            {/* Floating Warranty Tag */}
+            <motion.div 
+              style={{ position: 'absolute', top: 40, right: -30, background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.6rem 1rem', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.2)', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+            >
+              <i className="bi bi-shield-check" style={{ color: '#059669' }}></i>
+              <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>2 Year Warranty</span>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </div>
   </section>
@@ -158,6 +218,6 @@ return ( <div className="page-enter">
 
     </div>
   </section>
-</div>
+</motion.div>
 );
 }
