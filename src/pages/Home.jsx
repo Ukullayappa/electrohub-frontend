@@ -107,7 +107,7 @@ return ( <motion.div className="page-enter" initial={{ opacity: 0 }} animate={{ 
           {/* Floating Image matching screenshot style */}
           <div style={{ position: 'relative', width: '100%', maxWidth: 500, margin: '0 auto' }}>
             <img 
-              src="https://images.unsplash.com/photo-1592899677974-e50f5cb45b41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              src="/hero-phone.png" 
               alt="Premium Phone" 
               style={{ width: '100%', height: 'auto', borderRadius: '24px', boxShadow: '0 30px 60px rgba(0,0,0,0.5)', objectFit: 'cover', display: 'block', border: '1px solid rgba(255,255,255,0.05)' }} 
             />

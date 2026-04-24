@@ -99,8 +99,8 @@ const navLinks = [
 ];
 
 return (
-<> <div className="promo-banner">
-🚀 Free shipping on orders over ₹5,000  | 
+<> <div className="promo-banner d-none d-md-block">
+🚀 Free shipping on orders over ₹5,000  | 
 Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </div>
 
   <nav className={`main-navbar sticky-top ${scrolled ? 'scrolled shadow-sm' : ''}`}>

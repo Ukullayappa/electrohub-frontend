@@ -190,7 +190,7 @@ export default function AdminDashboard() {
                       { label: 'Total Products', value: stats.totalProducts, icon: 'bi-box-seam-fill', color: '#EA580C', bg: 'linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%)' },
                     ].map(s => (
                       <div key={s.label} className="col-sm-6 col-xl-3">
-                        <div style={{ background: 'white', borderRadius: '20px', padding: '1.75rem', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', position: 'relative', overflow: 'hidden', transition: 'all 0.3s ease' }}
+                        <div style={{ background: 'white', borderRadius: '20px', padding: '1.75rem', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', position: 'relative', overflow: 'hidden', transition: 'all 0.3s ease', height: '100%' }}
                           onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.06)'; }}
                           onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.03)'; }}
                         >
