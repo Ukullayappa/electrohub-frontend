@@ -30,6 +30,15 @@ return () => window.removeEventListener('scroll', handleScroll);
 }, []);
 
 useEffect(() => {
+if (mobileMenuOpen) {
+  document.body.style.overflow = 'hidden';
+} else {
+  document.body.style.overflow = '';
+}
+return () => { document.body.style.overflow = ''; };
+}, [mobileMenuOpen]);
+
+useEffect(() => {
 const handleClick = (e) => {
 if (searchRef.current && !searchRef.current.contains(e.target)) {
 setShowSearch(false);
@@ -225,7 +234,7 @@ Use code <strong>ELECTRO10</strong> for 10% off <a href="/shop">Shop Now</a> </d
 
     {/* Mobile Offcanvas Menu */}
     {mobileMenuOpen && <div className="mobile-nav-overlay" onClick={() => setMobileMenuOpen(false)}></div>}
-    <div className={`mobile-nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
+    <div className={`mobile-nav-menu ${mobileMenuOpen ? 'open' : ''}`} aria-hidden={!mobileMenuOpen}>
       <div className="mobile-nav-header">
         <div className="navbar-brand">Electro<span>Hub</span></div>
         <button className="btn-close" onClick={() => setMobileMenuOpen(false)}></button>
