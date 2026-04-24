@@ -69,6 +69,10 @@ getBrands: async () => {
 const res = await API.get('/products/brands');
 return { data: { brands: safe(res, 'brands') } };
 },
+getById: (id) => API.get(`/products/${id}`),
+create: (data) => API.post('/products', data),
+update: (id, data) => API.put(`/products/${id}`, data),
+delete: (id) => API.delete(`/products/${id}`),
 };
 
 // ─── CATEGORIES ─────────────────────
@@ -76,7 +80,10 @@ export const categoriesAPI = {
 getAll: async () => {
 const res = await API.get('/categories');
 return { data: { categories: safe(res, 'categories') } };
-}
+},
+create: (data) => API.post('/categories', data),
+update: (id, data) => API.put(`/categories/${id}`, data),
+delete: (id) => API.delete(`/categories/${id}`),
 };
 
 // ─── CART ───────────────────────────
@@ -112,6 +119,13 @@ return { data: { items: safe(res, 'items') } };
 },
 toggle: (pid) => API.post('/wishlist', { productId: pid }),
 remove: (pid) => API.delete(`/wishlist/${pid}`),
+};
+
+// ─── USERS (ADMIN) ──────────────────
+export const usersAPI = {
+getAll: () => API.get('/users'),
+getById: (id) => API.get(`/users/${id}`),
+delete: (id) => API.delete(`/users/${id}`),
 };
 
 export default API;

@@ -21,6 +21,7 @@ import { Login, Register } from './pages/Auth';
 import { Orders, OrderDetail, Wishlist, Profile } from './pages/UserPages';
 import { Categories, Deals, About, Contact, FAQ, Shipping, Returns, Privacy, Terms } from './pages/MiscPages';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminProductForm from './pages/AdminProductForm';
 
 function Layout({ children, hideFooter = false }) {
   return (
@@ -103,6 +104,12 @@ export default function App() {
               {/* Admin Routes */}
               <Route path="/admin" element={
                 <AdminRoute><Layout hideFooter><AdminDashboard /></Layout></AdminRoute>
+              } />
+              <Route path="/admin/products/new" element={
+                <AdminRoute><Layout hideFooter><AdminProductForm /></Layout></AdminRoute>
+              } />
+              <Route path="/admin/products/edit/:id" element={
+                <AdminRoute><Layout hideFooter><AdminProductForm /></Layout></AdminRoute>
               } />
 
               {/* 404 */}
