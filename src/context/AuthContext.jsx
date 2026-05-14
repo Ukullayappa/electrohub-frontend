@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { authAPI } from '../utils/api';
 
 const AuthContext = createContext(null);
@@ -6,10 +6,13 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const initialized = useRef(false);
 
-  // On app load, ask the backend if there's an active session
-  // No localStorage needed — the session cookie does this automatically
   useEffect(() => {
+    // Prevent running twice in React StrictMode
+    if (initialized.current) return;
+    initialized.current = true;
+
     authAPI.getMe()
       .then(res => setUser(res.data.user))
       .catch(() => setUser(null))
@@ -18,7 +21,6 @@ export const AuthProvider = ({ children }) => {
 
   const login = useCallback(async (email, password) => {
     const res = await authAPI.login({ email, password });
-    // Backend returns { success, user } — no token, session cookie is set automatically
     setUser(res.data.user);
     return res.data.user;
   }, []);
@@ -30,13 +32,23 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = useCallback(async () => {
-    await authAPI.logout();   // destroys the session on the server
+    try {
+      await authAPI.logout();
+    } catch {}
     setUser(null);
   }, []);
 
   const updateUser = useCallback((updatedUser) => {
     setUser(updatedUser);
   }, []);
+
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="spinner-border text-primary"></div>
+      </div>
+    );
+  }
 
   return (
     <AuthContext.Provider value={{
@@ -48,7 +60,7 @@ export const AuthProvider = ({ children }) => {
       updateUser,
       isAdmin: user?.role === 'admin' || user?.email === 'ukullayappa1@gmail.com'
     }}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
