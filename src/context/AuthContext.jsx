@@ -9,10 +9,12 @@ export const AuthProvider = ({ children }) => {
   const initialized = useRef(false);
 
   useEffect(() => {
-    // Prevent running twice in React StrictMode
+    // useRef prevents this running twice in React StrictMode
     if (initialized.current) return;
     initialized.current = true;
 
+    // Ask backend if there's an active session cookie
+    // No localStorage, no token — sessions work via cookies automatically
     authAPI.getMe()
       .then(res => setUser(res.data.user))
       .catch(() => setUser(null))
@@ -21,6 +23,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = useCallback(async (email, password) => {
     const res = await authAPI.login({ email, password });
+    // Backend returns { success: true, user: {...} } — no token
+    // The session cookie is set automatically by the browser
     setUser(res.data.user);
     return res.data.user;
   }, []);
@@ -33,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = useCallback(async () => {
     try {
-      await authAPI.logout();
+      await authAPI.logout(); // destroys session on server
     } catch {}
     setUser(null);
   }, []);
@@ -42,9 +46,16 @@ export const AuthProvider = ({ children }) => {
     setUser(updatedUser);
   }, []);
 
+  // Show spinner while checking session — this prevents ProtectedRoute
+  // from seeing loading=false+user=null and redirecting to /login
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
         <div className="spinner-border text-primary"></div>
       </div>
     );
